@@ -1,0 +1,20 @@
+{
+  "name": "autocal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mirror Google Calendar email reminders to Telegram at the same lead time.",
+  "scripts": {
+    "login": "clasp login",
+    "push": "clasp push",
+    "pull": "clasp pull",
+    "deploy": "clasp push --force",
+    "open": "clasp open",
+    "logs": "clasp logs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^1.0.83",
+    "typescript": "^5.4.0"
+  }
+}

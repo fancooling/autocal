@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# clasp — project-specific id and OAuth credentials (NEVER commit credentials)
+.clasp.json
+.clasprc.json
+
+# TypeScript build artifacts (clasp transpiles on push; we don't commit JS)
+*.js
+!.github/**/*.js
+
+# Editor / OS
+.DS_Store
+*.log
