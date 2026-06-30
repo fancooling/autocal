@@ -149,6 +149,6 @@ autocal/
   .github/workflows/deploy.yml
   src/
     appsscript.json          manifest (advanced service + scopes)
-    calendar.d.ts            minimal typings for the advanced Calendar service
+    calendar.d.ts            type aliases over @types/google-apps-script advanced service
     Code.ts                  poll(), fireDue(), telegram, helpers
 ```
