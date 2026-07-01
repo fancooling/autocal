@@ -44,6 +44,13 @@ function getNumProp(key: string, fallback: number): number {
   return raw === '' || isNaN(n) ? fallback : n;
 }
 
+/** Format an epoch-ms timestamp in the display timezone (defaults to the
+ *  project's configured timezone via Session.getScriptTimeZone()). */
+function fmtTime(ms: number): string {
+  const tz = getProp('DISPLAY_TZ', Session.getScriptTimeZone());
+  return Utilities.formatDate(new Date(ms), tz, 'yyyy-MM-dd HH:mm:ss z');
+}
+
 function getCalendarIds(): string[] {
   return getProp('CALENDAR_IDS', 'primary')
     .split(',')
@@ -173,7 +180,7 @@ function poll(): void {
           newlyScheduled++;
           console.log(
             'poll: scheduled "' + title + '" (' + minutes + ' min email reminder) — fires ' +
-              new Date(fireMs).toISOString(),
+              fmtTime(fireMs),
           );
         } else if (fireMs > now - graceMs) {
           // Due right now (event sooner than lookahead start): send immediately.
@@ -335,7 +342,7 @@ function listScheduled(): void {
   for (const k of keys) {
     const it = scheduled[k];
     console.log(
-      '  ' + new Date(it.fireTime).toISOString() + '  ' + it.title + '  (' + it.minutes + ' min before)',
+      '  ' + fmtTime(it.fireTime) + '  ' + it.title + '  (' + it.minutes + ' min before)',
     );
   }
 }
